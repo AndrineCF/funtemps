@@ -4,9 +4,11 @@ package conv
   I denne pakken skal alle konverteringfunksjonene
   implementeres. Bruk engelsk.
     FarhenheitToCelsius
+    FarhenheitToKelvin
     CelsiusToFahrenheit
+    CelsiusToKevin
     KelvinToFarhenheit
-    ...
+    KevinToCelsius
 */
 
 // Konverterer Farhenheit til Celsius
@@ -20,3 +22,23 @@ func FarhenheitToCelsius(value float64) float64 {
 
 // De andre konverteringsfunksjonene implementere her
 // ...
+
+func FarhenheitToKelvin(value float64) float64 {
+	return 0
+}
+
+func CelsiusToFahrenheit(value float64) float64 {
+	return 0
+}
+
+func CelsiusToKevin(value float64) float64 {
+	return 0
+}
+
+func KelvinToFarhenheit(value float64) float64 {
+	return 0
+}
+
+func KevinToCelsius(value float64) float64 {
+	return 0
+}

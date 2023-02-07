@@ -34,3 +34,23 @@ func TestFarhenheitToCelsius(t *testing.T) {
 
 // De andre testfunksjonene implementeres her
 // ...
+
+func TestFarhenheitToKelvin(t *testing.T) {
+
+}
+
+func TestCelsiusToFahrenheit(t *testing.T) {
+
+}
+
+func TestCelsiusToKevin(t *testing.T) {
+
+}
+
+func TestKelvinToFarhenheit(t *testing.T) {
+
+}
+
+func TestKevinToCelsius(t *testing.T) {
+
+}
