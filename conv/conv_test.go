@@ -20,6 +20,7 @@ func TestFarhenheitToCelsius(t *testing.T) {
 		want  float64
 	}
 
+	// Må legge til mer?
 	tests := []test{
 		{input: 134, want: 56.67},
 	}
@@ -36,21 +37,86 @@ func TestFarhenheitToCelsius(t *testing.T) {
 // ...
 
 func TestFarhenheitToKelvin(t *testing.T) {
+	type test struct {
+		input float64
+		want  float64
+	}
 
+	// Må legge til mer?
+	tests := []test{}
+
+	for _, tc := range tests {
+		got := FarhenheitToKelvin(tc.input)
+		if !reflect.DeepEqual(tc.want, got) {
+			t.Errorf("expected: %v, got: %v", tc.want, got)
+		}
+	}
 }
 
 func TestCelsiusToFahrenheit(t *testing.T) {
+	type test struct {
+		input float64
+		want  float64
+	}
 
+	// Må legge til mer?
+	tests := []test{}
+
+	for _, tc := range tests {
+		got := CelsiusToFahrenheit(tc.input)
+		if !reflect.DeepEqual(tc.want, got) {
+			t.Errorf("expected: %v, got: %v", tc.want, got)
+		}
+	}
 }
 
 func TestCelsiusToKevin(t *testing.T) {
+	type test struct {
+		input float64
+		want  float64
+	}
 
+	// Må legge til mer?
+	tests := []test{}
+
+	for _, tc := range tests {
+		got := CelsiusToKevin(tc.input)
+		if !reflect.DeepEqual(tc.want, got) {
+			t.Errorf("expected: %v, got: %v", tc.want, got)
+		}
+	}
 }
 
 func TestKelvinToFarhenheit(t *testing.T) {
+	type test struct {
+		input float64
+		want  float64
+	}
 
+	// Må legge til mer?
+	tests := []test{}
+
+	for _, tc := range tests {
+		got := KelvinToFarhenheit(tc.input)
+		if !reflect.DeepEqual(tc.want, got) {
+			t.Errorf("expected: %v, got: %v", tc.want, got)
+		}
+	}
 }
 
 func TestKevinToCelsius(t *testing.T) {
+	type test struct {
+		input float64
+		want  float64
+	}
 
+	// Må legge til mer?
+	tests := []test{}
+
+	for _, tc := range tests {
+		got := KevinToCelsius(tc.input)
+		if !reflect.DeepEqual(tc.want, got) {
+			t.Errorf("expected: %v, got: %v", tc.want, got)
+		}
+	}
 }
