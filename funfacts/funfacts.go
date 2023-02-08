@@ -17,3 +17,7 @@ package funfacts
 func fanfacts() {
 
 }
+
+func GetFunFacts() {
+
+}
