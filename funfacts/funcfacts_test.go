@@ -20,8 +20,8 @@ func TestGetFunFacts(t *testing.T) {
 
 	// Her må du legge inn korrekte testverdier
 	tests := []test{
-		{input: []string{"Sun", "C"}, want: "Temperatur på ytre lag av Solen 5506.85K.\nTemperatur i Solens kjerne er 15 000 000°C."},
-		{input: []string{"Sun", "F"}, want: "Temperatur i Solens kjerne"},
+		{input: []string{"Sun", "K"}, want: "Temperatur i Solens kjerne er 5778K."},
+		{input: []string{"Sun", "C"}, want: "Temperatur i Solens kjerne 15000000°C"},
 		{input: []string{"Terra", "C"}, want: "Høyeste temperatur målt på Jordens overflate 56.7°C\nLaveste temperatur målt på Jordens overflate -89.4°C"},
 		{input: []string{"Terra", "F"}, want: "Høyeste temperatur målt på Jordens overflate 134°F"},
 		{input: []string{"Terra", "K"}, want: "Temperatur i Jordens indre kjerne 9392K\nHøyeste temperatur målt på Jordens overflate 329.82K"},
