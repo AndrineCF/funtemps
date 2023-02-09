@@ -14,17 +14,22 @@ import (
 */
 func TestGetFunFacts(t *testing.T) {
 	type test struct {
-		input string  // her må du skrive riktig type for input
-		want  float64 // her må du skrive riktig type for returverdien
+		input []string // her må du skrive riktig type for input
+		want  string   // her må du skrive riktig type for returverdien
 	}
 
 	// Her må du legge inn korrekte testverdier
 	tests := []test{
-	 {input: "Sun", want: },
+		{input: []string{"Sun", "C"}, want: "Temperatur på ytre lag av Solen 5506.85K.\nTemperatur i Solens kjerne er 15 000 000°C."},
+		{input: []string{"Sun", "F"}, want: "Temperatur i Solens kjerne"},
+		{input: []string{"Terra", "C"}, want: "Høyeste temperatur målt på Jordens overflate 56.7°C\nLaveste temperatur målt på Jordens overflate -89.4°C"},
+		{input: []string{"Terra", "F"}, want: "Høyeste temperatur målt på Jordens overflate 134°F"},
+		{input: []string{"Terra", "K"}, want: "Temperatur i Jordens indre kjerne 9392K\nHøyeste temperatur målt på Jordens overflate 329.82K"},
+		{input: []string{"Luna", "C"}, want: "Temperatur på Månens overflate om natten -183°C.\nTemperatur på Månens overflate om dagen 106°C."},
 	}
 
 	for _, tc := range tests {
-		got := GetFunFacts(tc.input)
+		got := GetFunFacts(tc.input[0], tc.input[1])
 		if !reflect.DeepEqual(tc.want, got) {
 			t.Errorf("expected: %v, got: %v", tc.want, got)
 		}
