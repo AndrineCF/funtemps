@@ -3,6 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"math"
+
+	"github.com/andrinecf/Innstalasjon_og_Testing/conv"
 )
 
 // Definerer flag-variablene i hoved-"scope"
@@ -70,7 +73,17 @@ func main() {
 	if out == "C" && isFlagPassed("F") {
 		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
 		// skal returnere °C
-		fmt.Println("0°F er -17.78°C")
+		if fahr == math.Trunc(fahr) {
+			fmt.Printf("%d°F er %.2f°C", int(fahr), conv.FarhenheitToCelsius(fahr))
+		} else {
+			fmt.Printf("%.3f°F er %.2f°C", fahr, conv.FarhenheitToCelsius(fahr))
+		}
+	} else if out == "K" && isFlagPassed("F") {
+		if fahr == math.Trunc(fahr) {
+			fmt.Printf("%d°F er %.2fK", int(fahr), conv.FarhenheitToKelvin(fahr))
+		} else {
+			fmt.Printf("%.3f°F er %.2fK", fahr, conv.FarhenheitToKelvin(fahr))
+		}
 	}
 
 }

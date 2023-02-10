@@ -23,7 +23,7 @@ func FarhenheitToCelsius(value float64) float64 {
 	// lignende
 	convValue := (value - 32) * (5.0 / 9.0)
 
-	return math.Round(convValue*100) / 100
+	return convValue
 }
 
 // De andre konverteringsfunksjonene implementere her
@@ -32,7 +32,7 @@ func FarhenheitToCelsius(value float64) float64 {
 func FarhenheitToKelvin(value float64) float64 {
 	convValue := (value-32)*(5.0/9.0) + 273.15
 
-	return math.Round(convValue*100) / 100
+	return convValue
 }
 
 func CelsiusToFahrenheit(value float64) float64 {
@@ -44,17 +44,17 @@ func CelsiusToFahrenheit(value float64) float64 {
 func CelsiusToKevin(value float64) float64 {
 	convValue := value + 273.15
 
-	return math.Round(convValue*100) / 100
+	return convValue
 }
 
 func KelvinToFarhenheit(value float64) float64 {
 	convValue := (value-273.15)*(9.0/5.0) + 32
 
-	return math.Round(convValue*100) / 100
+	return convValue
 }
 
 func KevinToCelsius(value float64) float64 {
 	convValue := value - 273.15
 
-	return math.Round(convValue*100) / 100
+	return convValue
 }
