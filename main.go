@@ -10,6 +10,8 @@ import (
 
 // Definerer flag-variablene i hoved-"scope"
 var fahr float64
+var cels float64
+var kelv float64
 var out string
 var funfacts string
 
@@ -26,6 +28,8 @@ func init() {
 
 	// Definerer og initialiserer flagg-variablene
 	flag.Float64Var(&fahr, "F", 0.0, "temperatur i grader fahrenheit")
+	flag.Float64Var(&cels, "C", 0.0, "temperatur i grader celsius")
+	flag.Float64Var(&kelv, "K", 0.0, "temperatur i grader Kelvin")
 	// Du må selv definere flag-variablene for "C" og "K"
 	flag.StringVar(&out, "out", "C", "beregne temperatur i C - celsius, F - farhenheit, K- Kelvin")
 	flag.StringVar(&funfacts, "funfacts", "sun", "\"fun-facts\" om sun - Solen, luna - Månen og terra - Jorden")
@@ -83,6 +87,38 @@ func main() {
 			fmt.Printf("%d°F er %.2fK", int(fahr), conv.FarhenheitToKelvin(fahr))
 		} else {
 			fmt.Printf("%.3f°F er %.2fK", fahr, conv.FarhenheitToKelvin(fahr))
+		}
+	}
+
+	if out == "F" && isFlagPassed("C") {
+		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
+		// skal returnere °C
+		if cels == math.Trunc(cels) {
+			fmt.Printf("%d°F er %.2f°C", int(cels), conv.CelsiusToFahrenheit(cels))
+		} else {
+			fmt.Printf("%.3f°F er %.2f°C", cels, conv.CelsiusToFahrenheit(cels))
+		}
+	} else if out == "K" && isFlagPassed("C") {
+		if cels == math.Trunc(cels) {
+			fmt.Printf("%d°F er %.2fK", int(cels), conv.FarhenheitToKelvin(cels))
+		} else {
+			fmt.Printf("%.3f°F er %.2fK", cels, conv.FarhenheitToKelvin(cels))
+		}
+	}
+
+	if out == "F" && isFlagPassed("K") {
+		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
+		// skal returnere °C
+		if kelv == math.Trunc(kelv) {
+			fmt.Printf("%d°F er %.2f°C", int(kelv), conv.CelsiusToFahrenheit(kelv))
+		} else {
+			fmt.Printf("%.3f°F er %.2f°C", kelv, conv.CelsiusToFahrenheit(kelv))
+		}
+	} else if out == "C" && isFlagPassed("K") {
+		if kelv == math.Trunc(kelv) {
+			fmt.Printf("%d°F er %.2fK", int(kelv), conv.FarhenheitToKelvin(kelv))
+		} else {
+			fmt.Printf("%.3f°F er %.2fK", kelv, conv.FarhenheitToKelvin(kelv))
 		}
 	}
 
