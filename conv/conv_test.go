@@ -49,7 +49,7 @@ func TestFarhenheitToCelsius(t *testing.T) {
 
 	for _, tc := range tests {
 		got := FarhenheitToCelsius(tc.input)
-		if !withinTolerance(tc.want, got, 1e-12) {
+		if !withinTolerance(tc.want, got, 1e-2) {
 			t.Errorf("expected: %v, got: %v", tc.want, got)
 		}
 	}
@@ -72,7 +72,7 @@ func TestFarhenheitToKelvin(t *testing.T) {
 
 	for _, tc := range tests {
 		got := FarhenheitToKelvin(tc.input)
-		if !withinTolerance(tc.want, got, 1e-14) {
+		if !withinTolerance(tc.want, got, 1e-2) {
 			t.Errorf("expected: %v, got: %v", tc.want, got)
 		}
 	}

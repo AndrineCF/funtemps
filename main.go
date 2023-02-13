@@ -100,7 +100,7 @@ func main() {
 		}
 	} else if out == "K" && isFlagPassed("C") {
 		if cels == math.Trunc(cels) {
-			fmt.Printf("%d°F er %.2fK", int(cels), conv.FarhenheitToKelvin(cels))
+			fmt.Printf("%d°Fr %.2fC", int(cels), conv.FarhenheitToKelvin(cels))
 		} else {
 			fmt.Printf("%.3f°F er %.2fK", cels, conv.FarhenheitToKelvin(cels))
 		}
@@ -121,6 +121,15 @@ func main() {
 			fmt.Printf("%.3f°F er %.2fK", kelv, conv.FarhenheitToKelvin(kelv))
 		}
 	}
+
+	// funFacts.Sun.Kelvin = "Temperatur i Solens kjerne er 5778K."
+	// funFacts.Sun.Celsius = "Temperatur i Solens kjerne 15000000°C"
+
+	// funFacts.Luna.Celsius = "Temperatur på Månens overflate om natten -183°C.\nTemperatur på Månens overflate om dagen 106°C."
+
+	// funFacts.Terra.Farhrenheit = "Høyeste temperatur målt på Jordens overflate 134°F"
+	// funFacts.Terra.Celsius = "Høyeste temperatur målt på Jordens overflate 56.7°C\nLaveste temperatur målt på Jordens overflate -89.4°C"
+	// funFacts.Terra.Kelvin = "Temperatur i Jordens indre kjerne 9392K\nHøyeste temperatur målt på Jordens overflate 329.82K"
 
 }
 

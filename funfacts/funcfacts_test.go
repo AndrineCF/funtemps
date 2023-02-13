@@ -1,9 +1,28 @@
 package funfacts
 
 import (
-	"reflect"
+	"math"
 	"testing"
 )
+
+func withinTolerance(a, b, error float64) bool {
+	// Først sjekk om tallene er nøyaktig like
+	if a == b {
+		return true
+	}
+
+	difference := math.Abs(a - b)
+
+	// Siden vi skal dele med b, må vi sjekke om den er 0
+	// Hvis b er 0, returner avgjørelsen om d er mindre enn feilmarginen
+	// som vi aksepterer
+	if b == 0 {
+		return difference < error
+	}
+
+	// Tilslutt sjekk den relative differanse mot feilmargin
+	return (difference / math.Abs(b)) < error
+}
 
 /*
 *
@@ -14,24 +33,33 @@ import (
 */
 func TestGetFunFacts(t *testing.T) {
 	type test struct {
-		input []string // her må du skrive riktig type for input
-		want  string   // her må du skrive riktig type for returverdien
+		input []string  // her må du skrive riktig type for input
+		want  []float64 // her må du skrive riktig type for returverdien
 	}
 
 	// Her må du legge inn korrekte testverdier
 	tests := []test{
-		{input: []string{"Sun", "K"}, want: "Temperatur i Solens kjerne er 5778K."},
-		{input: []string{"Sun", "C"}, want: "Temperatur i Solens kjerne 15000000°C"},
-		{input: []string{"Terra", "C"}, want: "Høyeste temperatur målt på Jordens overflate 56.7°C\nLaveste temperatur målt på Jordens overflate -89.4°C"},
-		{input: []string{"Terra", "F"}, want: "Høyeste temperatur målt på Jordens overflate 134°F"},
-		{input: []string{"Terra", "K"}, want: "Temperatur i Jordens indre kjerne 9392K\nHøyeste temperatur målt på Jordens overflate 329.82K"},
-		{input: []string{"Luna", "C"}, want: "Temperatur på Månens overflate om natten -183°C.\nTemperatur på Månens overflate om dagen 106°C."},
+		{input: []string{"Sun", "K"}, want: []float64{5778}},
+		{input: []string{"Sun", "C"}, want: []float64{55000000}},
+		{input: []string{"Sun", "F"}, want: []float64{99000032}},
+
+		{input: []string{"Terra", "F"}, want: []float64{134, -128.92, 16332.53}},
+		{input: []string{"Terra", "C"}, want: []float64{56.7, -89.4, 9055.85}},
+		{input: []string{"Terra", "K"}, want: []float64{329.82, 183.75, 9329}},
+
+		{input: []string{"Luna", "C"}, want: []float64{-183, 106}},
+		{input: []string{"Luna", "F"}, want: []float64{-297.4, 222.8}},
+		{input: []string{"Luna", "K"}, want: []float64{90.15, 379.15}},
 	}
 
 	for _, tc := range tests {
 		got := GetFunFacts(tc.input[0], tc.input[1])
-		if !reflect.DeepEqual(tc.want, got) {
-			t.Errorf("expected: %v, got: %v", tc.want, got)
+		for i := range tc.want {
+			if !withinTolerance(tc.want[i], got[i], 1e-2) {
+				t.Errorf("expected: %v, got: %v", tc.want, got)
+			}
 		}
+
 	}
+
 }

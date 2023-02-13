@@ -1,6 +1,10 @@
 package funfacts
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/andrinecf/Innstalasjon_og_Testing/conv"
+)
 
 /**
   Implementer funfacts-funksjon:
@@ -15,37 +19,41 @@ import "fmt"
       Terra []string
   }
 */
+
+// SKal konverte verdiene med funskjoner
+
 type FunFacts struct {
 	Terra struct {
-		Celsius     string
-		Kelvin      string
-		Farhrenheit string
+		Celsius     []float64
+		Kelvin      []float64
+		Farhrenheit []float64
 	}
 	Sun struct {
-		Celsius string
-		Kelvin  string
+		Celsius     []float64
+		Kelvin      []float64
+		Farhrenheit []float64
 	}
 	Luna struct {
-		Celsius string
+		Celsius     []float64
+		Kelvin      []float64
+		Farhrenheit []float64
 	}
 }
 
-func GetFunFacts(fact string, tmp string) string {
-
-	// pesude code
-	// switch
-	// case for alle forskjell verdiene
-	// i case return ønsket verdi
+func GetFunFacts(fact string, tmp string) []float64 {
 
 	var funFacts FunFacts
-	funFacts.Sun.Kelvin = "Temperatur i Solens kjerne er 5778K."
-	funFacts.Sun.Celsius = "Temperatur i Solens kjerne 15000000°C"
+	funFacts.Sun.Kelvin = []float64{5778}
+	funFacts.Sun.Celsius = []float64{55000000}
+	funFacts.Sun.Farhrenheit = []float64{conv.CelsiusToFahrenheit(55000000)}
 
-	funFacts.Luna.Celsius = "Temperatur på Månens overflate om natten -183°C.\nTemperatur på Månens overflate om dagen 106°C."
+	funFacts.Luna.Celsius = []float64{-183, 106}
+	funFacts.Luna.Kelvin = []float64{conv.CelsiusToKevin(-183), conv.CelsiusToKevin(106)}
+	funFacts.Luna.Farhrenheit = []float64{conv.CelsiusToFahrenheit(-183), conv.CelsiusToFahrenheit(106)}
 
-	funFacts.Terra.Farhrenheit = "Høyeste temperatur målt på Jordens overflate 134°F"
-	funFacts.Terra.Celsius = "Høyeste temperatur målt på Jordens overflate 56.7°C\nLaveste temperatur målt på Jordens overflate -89.4°C"
-	funFacts.Terra.Kelvin = "Temperatur i Jordens indre kjerne 9392K\nHøyeste temperatur målt på Jordens overflate 329.82K"
+	funFacts.Terra.Farhrenheit = []float64{134, conv.CelsiusToFahrenheit(-89.4), conv.KelvinToFarhenheit(9329)}
+	funFacts.Terra.Celsius = []float64{56.7, -89.4, conv.KevinToCelsius(9329)}
+	funFacts.Terra.Kelvin = []float64{329.82, conv.CelsiusToKevin(-89.4), 9329}
 
 	switch {
 	case fact == "Sun":
@@ -53,11 +61,17 @@ func GetFunFacts(fact string, tmp string) string {
 			return funFacts.Sun.Celsius
 		} else if tmp == "K" {
 			return funFacts.Sun.Kelvin
+		} else if tmp == "F" {
+			return funFacts.Sun.Farhrenheit
 		}
 		break
 	case fact == "Luna":
 		if tmp == "C" {
 			return funFacts.Luna.Celsius
+		} else if tmp == "K" {
+			return funFacts.Luna.Kelvin
+		} else if tmp == "F" {
+			return funFacts.Luna.Farhrenheit
 		}
 		break
 	case fact == "Terra":
@@ -74,5 +88,5 @@ func GetFunFacts(fact string, tmp string) string {
 		fmt.Println("Ikke gyldig verdi")
 	}
 
-	return ""
+	return []float64{}
 }
