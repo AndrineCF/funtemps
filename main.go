@@ -74,63 +74,39 @@ func main() {
 	fmt.Println(isFlagPassed("out"))
 
 	// Eksempel på enkel logikk
+	// konverte verdier fra farhenheit
 	if out == "C" && isFlagPassed("F") {
-		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
-		// skal returnere °C
-		if fahr == math.Trunc(fahr) {
-			fmt.Printf("%d°F er %.2f°C", int(fahr), conv.FarhenheitToCelsius(fahr))
-		} else {
-			fmt.Printf("%.3f°F er %.2f°C", fahr, conv.FarhenheitToCelsius(fahr))
-		}
+		formatTemp(fahr, conv.FarhenheitToCelsius(fahr), "°F", "°C")
 	} else if out == "K" && isFlagPassed("F") {
-		if fahr == math.Trunc(fahr) {
-			fmt.Printf("%d°F er %.2fK", int(fahr), conv.FarhenheitToKelvin(fahr))
-		} else {
-			fmt.Printf("%.3f°F er %.2fK", fahr, conv.FarhenheitToKelvin(fahr))
-		}
+		formatTemp(fahr, conv.FarhenheitToKelvin(fahr), "°F", "K")
 	}
 
+	// Konverte verdier fra celsius
 	if out == "F" && isFlagPassed("C") {
 		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
 		// skal returnere °C
-		if cels == math.Trunc(cels) {
-			fmt.Printf("%d°F er %.2f°C", int(cels), conv.CelsiusToFahrenheit(cels))
-		} else {
-			fmt.Printf("%.3f°F er %.2f°C", cels, conv.CelsiusToFahrenheit(cels))
-		}
+		formatTemp(cels, conv.CelsiusToFahrenheit(cels), "°C", "°F")
 	} else if out == "K" && isFlagPassed("C") {
-		if cels == math.Trunc(cels) {
-			fmt.Printf("%d°Fr %.2fC", int(cels), conv.FarhenheitToKelvin(cels))
-		} else {
-			fmt.Printf("%.3f°F er %.2fK", cels, conv.FarhenheitToKelvin(cels))
-		}
+		formatTemp(cels, conv.CelsiusToKevin(cels), "°C", "K")
 	}
 
+	//konverte verdier fra kelvin
 	if out == "F" && isFlagPassed("K") {
 		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
 		// skal returnere °C
-		if kelv == math.Trunc(kelv) {
-			fmt.Printf("%d°F er %.2f°C", int(kelv), conv.CelsiusToFahrenheit(kelv))
-		} else {
-			fmt.Printf("%.3f°F er %.2f°C", kelv, conv.CelsiusToFahrenheit(kelv))
-		}
+		formatTemp(kelv, conv.KelvinToFarhenheit(kelv), "K", "°F")
 	} else if out == "C" && isFlagPassed("K") {
-		if kelv == math.Trunc(kelv) {
-			fmt.Printf("%d°F er %.2fK", int(kelv), conv.FarhenheitToKelvin(kelv))
-		} else {
-			fmt.Printf("%.3f°F er %.2fK", kelv, conv.FarhenheitToKelvin(kelv))
-		}
+		formatTemp(kelv, conv.KevinToCelsius(kelv), "K", "°C")
 	}
 
-	// funFacts.Sun.Kelvin = "Temperatur i Solens kjerne er 5778K."
-	// funFacts.Sun.Celsius = "Temperatur i Solens kjerne 15000000°C"
+}
 
-	// funFacts.Luna.Celsius = "Temperatur på Månens overflate om natten -183°C.\nTemperatur på Månens overflate om dagen 106°C."
-
-	// funFacts.Terra.Farhrenheit = "Høyeste temperatur målt på Jordens overflate 134°F"
-	// funFacts.Terra.Celsius = "Høyeste temperatur målt på Jordens overflate 56.7°C\nLaveste temperatur målt på Jordens overflate -89.4°C"
-	// funFacts.Terra.Kelvin = "Temperatur i Jordens indre kjerne 9392K\nHøyeste temperatur målt på Jordens overflate 329.82K"
-
+func formatTemp(temp float64, konvTemp float64, inputF string, outputF string) {
+	if temp == math.Trunc(temp) {
+		fmt.Printf("%d%s er %.2f%s", int(temp), inputF, konvTemp, outputF)
+	} else {
+		fmt.Printf("%.3f%s er %.2f%s", temp, inputF, konvTemp, outputF)
+	}
 }
 
 // Funksjonen sjekker om flagget er spesifisert på kommandolinje
