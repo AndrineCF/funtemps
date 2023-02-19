@@ -109,6 +109,15 @@ func formatTemp(temp float64, konvTemp float64, inputF string, outputF string) {
 	}
 }
 
+func formattingBignumber(temp float32) {
+	s := fmt.Sprintf("%f", temp)
+	if len(s) > 7 {
+		fmt.Sprintf("%d %s %s", temp/1000000, "000", "000")
+	} else if len(s) > 3 {
+		fmt.Sprintf("%d %s", temp/1000, "000")
+	}
+}
+
 // Funksjonen sjekker om flagget er spesifisert på kommandolinje
 // Du trenger ikke å bruke den, men den kan hjelpe med logikken
 func isFlagPassed(name string) bool {
