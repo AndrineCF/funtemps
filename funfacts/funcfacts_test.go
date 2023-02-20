@@ -39,17 +39,17 @@ func TestGetFunFacts(t *testing.T) {
 
 	// Her må du legge inn korrekte testverdier
 	tests := []test{
-		{input: []string{"Sun", "K"}, want: []float64{5778}},
-		{input: []string{"Sun", "C"}, want: []float64{55000000}},
-		{input: []string{"Sun", "F"}, want: []float64{99000032}},
+		{input: []string{"sun", "K"}, want: []float64{5778}},
+		{input: []string{"sun", "C"}, want: []float64{55000000}},
+		{input: []string{"sun", "F"}, want: []float64{99000032}},
 
-		{input: []string{"Terra", "F"}, want: []float64{134, -128.92, 16332.53}},
-		{input: []string{"Terra", "C"}, want: []float64{56.7, -89.4, 9055.85}},
-		{input: []string{"Terra", "K"}, want: []float64{329.82, 183.75, 9329}},
+		{input: []string{"terra", "F"}, want: []float64{134, -128.92, 16332.53}},
+		{input: []string{"terra", "C"}, want: []float64{56.7, -89.4, 9055.85}},
+		{input: []string{"terra", "K"}, want: []float64{329.82, 183.75, 9329}},
 
-		{input: []string{"Luna", "C"}, want: []float64{-183, 106}},
-		{input: []string{"Luna", "F"}, want: []float64{-297.4, 222.8}},
-		{input: []string{"Luna", "K"}, want: []float64{90.15, 379.15}},
+		{input: []string{"luna", "C"}, want: []float64{-183, 106}},
+		{input: []string{"luna", "F"}, want: []float64{-297.4, 222.8}},
+		{input: []string{"luna", "K"}, want: []float64{90.15, 379.15}},
 	}
 
 	for _, tc := range tests {

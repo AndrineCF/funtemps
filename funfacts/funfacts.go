@@ -56,7 +56,7 @@ func GetFunFacts(fact string, tmp string) []float64 {
 	funFacts.Terra.Kelvin = []float64{329.82, conv.CelsiusToKevin(-89.4), 9329}
 
 	switch {
-	case fact == "Sun":
+	case fact == "sun":
 		if tmp == "C" {
 			return funFacts.Sun.Celsius
 		} else if tmp == "K" {
@@ -65,7 +65,7 @@ func GetFunFacts(fact string, tmp string) []float64 {
 			return funFacts.Sun.Farhrenheit
 		}
 		break
-	case fact == "Luna":
+	case fact == "luna":
 		if tmp == "C" {
 			return funFacts.Luna.Celsius
 		} else if tmp == "K" {
@@ -74,7 +74,7 @@ func GetFunFacts(fact string, tmp string) []float64 {
 			return funFacts.Luna.Farhrenheit
 		}
 		break
-	case fact == "Terra":
+	case fact == "terra":
 		if tmp == "C" {
 			return funFacts.Terra.Celsius
 		} else if tmp == "K" {
