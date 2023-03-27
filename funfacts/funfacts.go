@@ -3,7 +3,7 @@ package funfacts
 import (
 	"fmt"
 
-	"github.com/andrinecCF/funtemps/conv"
+	"github.com/AndrineCF/funtemps/conv"
 )
 
 /**
