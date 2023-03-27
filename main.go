@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/andrinecCF/funtemps/conv"
-	"github.com/andrinecCF/funtemps/funfacts"
+	"github.com/andrineCF/funtemps/conv"
+	"github.com/andrineCF/funtemps/funfacts"
 )
 
 // Definerer flag-variablene i hoved-"scope"

@@ -1,3 +1,3 @@
-module github.com/andrinecCF/funtemps
+module github.com/andrineCF/funtemps/conv
 
-go 1.19
+go 1.18
